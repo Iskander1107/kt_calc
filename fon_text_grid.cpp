@@ -109,7 +109,7 @@ void BackPanel::OnMouse(wxMouseEvent& event) {
 };
 
 CalcFrame::CalcFrame(const wxString& title)
-    : wxFrame(NULL, wxID_ANY, title, wxPoint(50, 50), wxSize(800, 1000)) {
+    : wxFrame(NULL, wxID_ANY, title, wxPoint(50, 50), wxSize(1920, 1080)) {
   wxInitAllImageHandlers();
   sizer = new wxBoxSizer(wxHORIZONTAL);
   drawPane = new BackPanel(this, wxT("calcApp.png"), wxBITMAP_TYPE_PNG);
@@ -218,7 +218,7 @@ CalcFrame::CalcFrame(const wxString& title)
             wxCommandEventHandler(CalcFrame::pressOne));
   }
 
-  gs = new wxGridSizer(2, 2, 3, 3);
+  gs = new wxGridSizer(3, 3, 3, 3);
   //  Создаем текстовый объект
   display =
       new wxTextCtrl(panel, -1, wxT("00"), wxPoint(100, 100), wxSize(50, 25));
@@ -232,7 +232,7 @@ CalcFrame::CalcFrame(const wxString& title)
   //  атрибуты
 
   gs->Add(new wxTextCtrl(panel, -1, wxT("00000000"), wxPoint(0, 0),
-                         wxSize(50, 400), wxTB_TOP));
+                         wxSize(400, 50), wxTB_TOP));
 
   gs->Add(new wxTextCtrl(panel, -1, wxT("01"), wxPoint(123, 143),
                          wxSize(50, 50), wxTE_RIGHT),
@@ -285,6 +285,7 @@ void CalcFrame::pressOne(wxCommandEvent& event) {
         right_op.push_back('0');
       }
       CalcFrame::Upd();
+      break;
     case BUTTON_1:
       if (current_operand == LEFT_OPERAND) {
         left_op.push_back('1');
